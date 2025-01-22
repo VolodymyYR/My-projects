@@ -1,0 +1,26 @@
+.Toc :global ul {
+  color: #c9d1d9;
+}
+.Toc :global ul > li {
+  list-style-type: square;
+}
+.Toc :global ul > li:hover {
+  color: cyan;
+}
+.Toc :global ul > li.close {
+  list-style-type: disclosure-closed;
+}
+.Toc :global ul > li.close > ul {
+  display: none;
+}
+.Toc :global ul > li.open {
+  list-style-type: disclosure-open;
+  color: cyan;
+}
+.Toc :global ul > li.active {
+  color: cyan;
+}
+.Toc :global a {
+  color: #c9d1d9;
+  text-decoration: none;
+}

@@ -1,0 +1,53 @@
+.DemoMask {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  margin: 15px;
+}
+.DemoMask > div {
+  margin: 5px;
+}
+.DemoMask :global .demoField {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.DemoMask :global .demoField > div > span {
+  display: inline-block;
+  width: 150px;
+}
+.DemoMask :global .demoField > div > input {
+  width: 250px;
+}
+.DemoMask :global .eventIndicator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+}
+.DemoMask :global .eventIndicator > span {
+  margin: 0 5px 0 5px;
+  padding: 2px 7px 2px 7px;
+  background-color: black;
+  color: #c9d1d9;
+  border-radius: 5px;
+}
+.DemoMask :global .eventIndicator > span.fired {
+  background-color: #f58220 !important;
+  color: #c9d1d9 !important;
+  font-weight: bold !important;
+}

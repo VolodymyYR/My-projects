@@ -1,0 +1,110 @@
+:export {
+  ScreenThreshold: 600;
+  AsideThreshold: 950;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  overflow: hidden;
+}
+@media only screen and (min-width: 600px) {
+  .content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+}
+@media only screen and (min-width: 600px) {
+  .article {
+    -ms-flex-preferred-size: 34.375rem;
+        flex-basis: 34.375rem;
+  }
+}
+
+.asideright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 200px;
+      flex-basis: 200px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #c9d1d9;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+}
+
+.scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: auto;
+  scrollbar-color: gray rgba(255, 255, 255, 0.2509803922);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+.scrollable::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.2509803922);
+}
+.scrollable::-webkit-scrollbar-corner {
+  background-color: rgba(255, 255, 255, 0.2509803922);
+}
+.scrollable::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+@media only screen and (min-width: 600px) {
+  .scrollable {
+    margin-right: 5px;
+  }
+}
+
+:global(#app) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+:global(a) {
+  color: lightblue;
+}
+:global(a):visited {
+  color: #4baac8;
+}
