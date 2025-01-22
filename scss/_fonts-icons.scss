@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'icons';
+    src: url('../fonts/font-icons/icons.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: block;
+}
+
+[class*="_icon-"]::before {
+/* use !important to prevent issues with browser extensions that change fonts */
+font-family: 'icons';
+// speak: never;
+
+/* Better Font Rendering =========== */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+._icon-whatsapp:before {
+content: "\e900";
+}
+._icon-wallet:before {
+content: "\e901";
+}
+._icon-viber:before {
+content: "\e902";
+}
+._icon-user:before {
+content: "\e903";
+}
+._icon-twoChat:before {
+content: "\e904";
+}
+._icon-truck:before {
+content: "\e905";
+}
+._icon-telegram:before {
+content: "\e906";
+}
+._icon-star:before {
+content: "\e907";
+}
+._icon-sorting:before {
+content: "\e908";
+}
+._icon-search:before {
+content: "\e909";
+}
+._icon-sale:before {
+content: "\e90a";
+}
+._icon-rounded-arrow:before {
+content: "\e90b";
+}
+._icon-response:before {
+content: "\e90c";
+}
+._icon-reload:before {
+content: "\e90d";
+}
+._icon-question-mark:before {
+content: "\e90e";
+}
+._icon-plane:before {
+content: "\e90f";
+}
+._icon-phone:before {
+content: "\e910";
+}
+._icon-marker:before {
+content: "\e911";
+}
+._icon-map:before {
+content: "\e912";
+}
+._icon-mail:before {
+content: "\e913";
+}
+._icon-logo-krovato:before {
+content: "\e914";
+}
+._icon-like:before {
+content: "\e915";
+}
+._icon-instagram:before {
+content: "\e916";
+}
+._icon-info:before {
+content: "\e917";
+}
+._icon-filter:before {
+content: "\e918";
+}
+._icon-favorite:before {
+content: "\e919";
+}
+._icon-facebook:before {
+content: "\e91a";
+}
+._icon-cross:before {
+content: "\e91b";
+}
+._icon-credit:before {
+content: "\e91c";
+}
+._icon-corner-arrow:before {
+content: "\e91d";
+}
+._icon-coment-chek-marker:before {
+content: "\e91e";
+}
+._icon-chek-marker:before {
+content: "\e91f";
+}
+._icon-chat:before {
+content: "\e920";
+}
+._icon-catalog:before {
+content: "\e921";
+}
+._icon-call:before {
+content: "\e922";
+}
+._icon-calendar:before {
+content: "\e923";
+}
+._icon-basket:before {
+content: "\e924";
+}
+._icon-arrow:before {
+content: "\e925";
+}

@@ -1,0 +1,46 @@
+@use "sass:math";
+
+@import "_reset.scss";
+@import "_fonts.scss";
+@import "_fonts-icons.scss";
+@import "_mixins.scss";
+@import "_myParents.scss";
+@import "_changes.scss";
+@import "_header.scss";
+@import "_home.scss";
+@import "_category.scss";
+@import "_ware.scss";
+@import "_footer.scss";
+
+body{
+    font-family: "Proxima Nova";
+    font-weight: 400;
+    background: $colorLight;
+    color: $colorGrey;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+	overflow: clip;
+}
+
+.wrapper > main{
+    flex: 1 1 0;
+}
+
+[class*="__container"]{
+    max-width: toRem($containerWidth);
+    padding-inline: toRem(15);
+    margin: 0 auto;
+
+}
+
+main >*:not(:last-child){
+    @include adaptiveValue('margin-block-end', 70, 35);
+}
+
+// =========================================================
+// =======================================================================================================================
+// =========================================================

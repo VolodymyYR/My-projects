@@ -1,0 +1,57 @@
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1920;
+// Ширина обмежуючого контейнера (0 = немає обмеження)
+$maxWidthContainer: 1290;
+// Загальний відступ у контейнера
+// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 30;
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Changes Colors
+$colorDark: #2B2929;
+$colorGrey: #535353;
+$colorLight:#F8F8F8;
+$colorGreyLight: #B1B1B1;
+$colorYellow: #FFBC57;
+$colorWhite: #fff;
+
+// Titles
+%titleH2{
+    font-weight: 600;
+    font-size: toRem(40);
+}
+%titleH3{
+    font-weight: 600;
+    font-size: toRem(30);
+}
+%titleH4{
+    font-weight: 600;
+    font-size: toRem(26);
+    line-height: 1.31;
+}
+%titleH5{
+    font-weight: 700;
+    font-size: toRem(20);
+    line-height: 1.4;
+}
+%titleH6{
+    font-weight: 600;
+    font-size: toRem(19);
+}
+
+// Card
+%card{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #fff;
+    border-radius: toRem(8);
+    padding: toRem(20);
+    gap: toRem(20);
+    border: 1px solid #e3e2e2;
+    box-shadow: -3px 4px 15px 0 rgba(0, 0, 0, .06);
+    overflow: hidden;
+}
