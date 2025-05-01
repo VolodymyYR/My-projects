@@ -1,0 +1,665 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik:regular,400,500&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:900&display=swap);
+
+
+html,
+body{
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+img{
+    vertical-align: top;
+}
+
+button{
+    background: inherit;
+    border: none;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+ol,
+li,
+ul{
+    list-style: none;
+}
+/* ------------------------ Обнулення ---------------------------- */
+/* --------------------------------------------------------------- */
+/* ------------------------ Адаптив ---------------------------- */
+
+[class*="__container"]{
+    max-width: 52.5rem /* 840/16 */;
+    padding: 0 .9375rem /* 15/16 */;
+    margin: 0 auto;
+}
+
+/* ------------------------ Контейнер ---------------------------- */
+/* --------------------------------------------------------------- */
+/* ------------------------ Загальні ----------------------------- */
+body{
+    font-family: Rubik;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100%;
+    overflow: clip;
+}
+
+.page{
+    flex: 1 1 auto;
+}
+
+.page__main
+
+.page__material
+
+.page__innovatie
+
+.page__info
+/* ------------------------ Загальні ------------------------------ */
+/* ---------------------------------------------------------------- */
+/* ------------------------ Модулі ------------------------------- */
+
+.title{
+    font-family: Merriweather;
+    font-size: 1.875rem /* 30/16 */;
+    font-weight: 900;
+    line-height: 1.3;
+    color: #fff;
+}
+
+@media (max-width:50.625rem /* 810/16 */) {
+    .title{
+        font-size: calc(1.25rem + (30 - 20) * ((100vw - 20rem) / (810 - 320)))
+    }
+}
+
+.title--dark{
+    font-family: Merriweather;
+    font-size: 1.875rem /* 30/16 */;
+    font-weight: 900;
+    color: #222F33;
+}
+/* ------------------------ Модулі ------------------------------- */
+/* ---------------------------------------------------------------- */
+/* ------------------------ Header ---------------------------------*/
+.header {
+    z-index: 50;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.header::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.header.scroll::before{
+    opacity: 1;
+}
+
+.header__container {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: .9375rem /* 15/16 */;
+    min-height: 6.25rem /* 100/16 */;
+    padding-top: .3125rem /* 5/16 */;
+    padding-bottom: .3125rem /* 5/16 */;
+}
+.header__logo {
+}
+.header__body {
+    display: flex;
+    align-items: center;
+    column-gap: 2.6875rem /* 43/16 */;
+}
+.header__main {
+    display: flex;
+}
+.main__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 2.5rem /* 40/16 */;
+    row-gap: .625rem /* 10/16 */;
+}
+.main__item {
+}
+.main__link {
+    font-size: 0.75rem /* 12/16 */;
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+}
+
+.main__link::before{
+    content: "";
+    position: absolute;
+    transition: width 0.3s ease 0s;
+    width: 0rem /* 0/16 */;
+    height: .0625rem /* 1/16 */;
+    background-color: #fff;
+    left: 0;
+    bottom: 0;
+}
+.main__link:hover::before{
+    width: 100%;
+}
+.header__button {
+    display: flex;
+    text-align: center;
+    font-size: .75rem /* 12/16 */;
+    font-weight: 500;
+    color: #606B74;
+
+    padding: .625rem /* 10/16 */ 1.34375rem /* 21.5/16 */;
+    background-color: #fff;
+    border-radius: .25rem /* 4/16 */;
+
+    transition: all 0.3s ease 0s;
+}
+
+.header__button:hover{
+    background-color: #222F33;
+    color: #fff;
+}
+
+@media (max-width: 37.5em) {
+    .header__container {
+        min-height: 4.375rem /* 70/16 */;
+    }
+    .header__logo{
+        overflow: hidden;
+        flex: 0 0 2.1875rem /* 35/16 */;
+    }
+
+    .header__body{
+        column-gap: 1.25rem /* 20/16 */;
+    }
+    .main__link{
+        font-size: .875rem /* 14/16 */;
+    }
+
+    .main__list{
+        column-gap: 1.25rem /* 20/16 */;
+        justify-content: center;
+    }
+
+    .header__button{
+        padding: .625rem /* 10/16 */ .9375rem /* 15/16 */;
+    }
+}
+
+/* ------------------------------------------------------------------ */
+
+.page__main {
+}
+.main {
+    min-height: 100vh;
+    display: flex;
+
+    position: relative;
+}
+.main__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    padding-top: 6.25rem /* 100/16 */;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.main__body {
+    display: grid;
+    grid-template-columns: 54.320988% auto; /* 440/810 */
+    gap: 1.875rem /* 30/16 */;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5625rem /* 25/16 */;
+}
+.main__content {
+}
+.content-main {
+}
+.content-main__label {
+    font-size: 1rem /* 16/16 */;
+    font-weight: 500;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+.content-main__label:not(:last-child){
+    margin-bottom: .75rem /* 12/16 */;
+}
+
+.content-main__title{
+    font-size: 1.875rem /* 30/16 */;
+}
+
+@media (min-width: 41.9375rem /* 670/16 */) {
+    .content-main__title {
+        max-width: 27.5rem /* 440/16 */;
+    }   
+}
+.main__videoPlayer {
+}
+.videoPlayer-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+.videoPlayer-main__link {
+    cursor: pointer;
+}
+.videoPlayer-main__link:hover{
+}
+.videoPlayer-main__title {
+}
+.main__imgFon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+}
+
+.main__imgFon img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    object-fit: cover;
+}
+
+@media (max-width: 50.625rem /* 810/16 */) {
+    .main__container {
+        padding-top: calc(4.375rem + (100 - 70) * (100vw - 20rem ) / (810 - 320));
+    }
+}
+
+@media (max-width: 41.875em /* 670/16 */) {
+    .main__body{
+        grid-template-columns: auto;
+        flex-direction: column;
+    }
+    .content-main {
+        text-align: center;
+    }
+    .main__imgFon img{
+        opacity: 0.8;
+    }
+}
+
+/* ------------------------- main ----------------------------------- */
+/* ------------------------------------------------------------------ */
+/* ------------------------- material ------------------------------- */
+
+.swiper{
+    overflow: hidden;
+}
+
+.swiper-initialized{
+    touch-action: pan-y;
+}
+
+.swiper-wrapper{
+    display: flex;
+    box-sizing: content-box;
+}
+
+.swiper-slide{
+    flex-shrink: 0;
+}
+
+.material {
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width:40.625rem){
+.material::before{
+    content: "";
+    position: absolute;
+    height: 2.3125rem /* 37/16 */;
+    width: 63%;
+    background-color: #fff;
+    left: 0;
+    top: -2.26rem /* 37/16 */;
+}
+
+.material::after{
+    content: "";
+    position: absolute;
+    width: 37%; /* 384/1000 */
+    height: 8.6875rem /* 139/16 */;
+    background-color: #222F33;
+    bottom: 0;
+    right: 0;
+}
+}
+.material___container {
+    display: grid;
+    grid-template-columns: 50% minmax(17.5rem, 20.3125rem);
+    justify-content: space-between;
+    align-items: start;
+    column-gap: 4.6875rem /* 75/16 */;
+    row-gap: 1.25rem /* 20/16 */;
+}
+.material__content {
+}
+.content-material {
+    padding-top: 1.5625rem /* 25/16 */;
+    display: grid;
+    row-gap: .8125rem /* 13/16 */;
+    justify-items: start;
+}
+.content-material__title {
+}
+
+.content-material__text {
+    font-family: Rubik;
+    font-size: .875rem /* 14/16 */;
+    line-height: 1.625rem /* 26/16 */;
+    color: #646D70;
+}
+.content-material__more {
+    color: #606B74;
+    text-align: center;
+    font-size: .75rem /* 12/16 */;
+    font-weight: 500;
+
+    border-radius: .25rem /* 4/16 */;
+    border: .0625rem /* 1/16 */ solid #646D70;
+    padding: .625rem /* 10/16 */ .9375rem /* 15/16 */;
+
+    transition: all 0.3s ease 0s;
+}
+
+.content-material__more:hover{
+    background-color: #646D70;
+    color: #fff;
+}
+
+
+.slider-material {
+    position: relative;
+    transform: translate(0, -20.765027%);
+    z-index: 2;
+}
+.slider-material__wrapper {
+}
+.slider-material__slide {
+    aspect-ratio: 325 / 366;
+    position: relative;
+}
+
+.slider-material__slide img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+.slider-material__pagination {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: .5rem /* 8/16 */;
+    left: 0;
+    bottom: 0;
+    padding: 0 .3125rem /* 5/16 */ 1rem /* 16/16 */ .3125rem /* 5/16 */;
+}
+
+.swiper-pagination-bullet{
+    flex: 0 0 .5rem /* 8/16 */;
+    height: .5rem /* 8/16 */;
+    background-color: #fff;
+    opacity: 0.4;
+    border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active{
+    opacity: 1;
+}
+
+@media (max-width:40.625rem) {
+    .material{
+        padding-bottom: 1.25rem;
+    }
+    .material___container {
+        grid-template-columns: auto;
+    }
+    .slider-material{
+        transform: translate(0);
+    }
+}
+
+/* --------------------------------- material -------------------------- */
+/* --------------------------------------------------------------------- */
+/* --------------------------------- innovatie ------------------------- */
+
+.innovatie {
+    padding: 4.5rem 0 4.875rem 0;
+    background-color: #222F33;
+}
+.innovatie__container {
+    display: grid;
+    row-gap: .5rem /* 8/16 */;
+}
+.innovatie__title {
+    font-family: Merriweather;
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+}
+.innovatie__text {
+    columns: 2 250px;
+    column-gap: 2.6875rem;
+    opacity: 0.7;
+}
+
+.innovatie__text p{
+    font-size: .875rem /* 14/16 */;
+    font-weight: 400;
+    line-height: 1.5; /* 24/16 */
+}
+
+.innovatie__text p:not(:last-child){
+    margin-bottom: 1.25rem /* 20/16 */;
+}
+
+/* ------------------------ innovite -------------------*/
+/* -----------------------------------------------------*/
+/* ------------------------ info -----------------------*/
+
+.info {
+    padding: 5.625rem /* 90/16 */ 0;
+}
+.info__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4.6875rem /* 75/16 */;
+    row-gap: 1.875rem;
+}
+/* .info__images-body{
+    flex: 0 0 22.1875rem;
+    height: 100%;
+} */
+.info__image {
+    text-align: center;
+}
+.info__image img{
+    max-width: 100%;
+}
+.info__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3.75rem /* 60/16 */;
+    row-gap: 2.3125rem;
+}
+.info__item {
+}
+.info__title {
+    color: #222F33;
+    font-family: Merriweather;
+    font-size: 1.125rem;
+    font-weight: 900;
+}
+.info__title:not(:last-child){
+    margin-bottom: .25rem /* 4/16 */;
+}
+.info__text {
+    color: rgba(100, 109, 112, 0.7);
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.375rem;
+}
+
+@media (max-width:52.5em) {
+    .info__container{
+        column-gap: 1.25rem /* 20/16 */;
+    }
+
+    .info__content{
+        column-gap: 1.25rem /* 20/16 */;
+    }
+}
+
+@media (max-width: 47.99875rem /* 767.98/16 */) {
+    .info{
+        padding: 2.5rem /* 40/16 */ 0;
+    }
+    .info__container{
+        grid-template-columns: auto;
+    }
+    .info__image {
+        order: 2;
+    }
+
+    .info__content{
+        order: 1;
+    }
+}
+
+/* --------------------- info --------------- */
+/* ------------------------------------------ */
+/* --------------------- footer ------------- */
+
+.footer {
+    background-color: #222F33;
+    padding: 2.0625rem /* 33/16 */ 0;
+}
+.footer__container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: .625rem /* 10/16 */;
+}
+.footer__mail {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255, 0.6);
+}
+.footer__logo {
+    justify-self: center;
+}
+.footer__manu {
+}
+.menu-footer {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    column-gap: 1.875rem;
+}
+.menu-footer-list {
+    display: flex;
+}
+.menu-footer-item {
+}
+.menu-footer__link {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255, 0.6);
+}
+
+.menu-footer__link:hover{
+    text-decoration: underline;
+}
+
+@media (max-width: 37.5em /* 600/16 */) {
+    .footer{
+        padding: 1.5625rem 0
+    }
+    .footer__container{
+        grid-template-columns: auto;
+    }
+    .footer__mail{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
