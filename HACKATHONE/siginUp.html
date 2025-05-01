@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>SiginUp</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20250501094704">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- <header class="header">
+	<div class="header__container">
+        <div class="header__top">
+            <a href="#" class="header__logo-body">
+                <img src="img/icons/logo.svg" alt="Image">
+            </a>
+            <div class="header__menu menu">
+                <nav class="menu__body">
+                    <div class="menu__body-header header-menu-body">
+                        <button class="header-menu-body__close"></button>
+                    </div>
+                    <ul class="menu__list">
+                        <li class="menu__item"><a href="../basic.html" class="menu__link _icon-home"></a></li>
+                        <li class="menu__item"><a href="#" class="menu__link _icon-calendar"></a></li>
+                        <li class="menu__item"><a href="#" class="menu__link _icon-group"></a></li>
+                        <li class="menu__item"><a href="#" class="menu__link _icon-podcasts"></a></li>
+                        <li class="menu__item"><a href="#" class="menu__link _icon-interviews"></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header__search search-header" data-da=".header__actions,990.98,0">
+                <form action="#" class="search-header__form action--item" data-da=".header__bottom,990.98">
+                    <input type="text" name="" id="" class="search-header__input" placeholder="Type here to search...">
+                    <button type="submit" class="search-header__submit _icon-search"></button>
+                </form>
+            </div>
+            <div class="header__actions actions-header">
+                <button type="button" class="menu__icon icon-menu"><span></span></button>
+                <button class="actions-header__search-button _icon-search action--item"></button>
+                <a href="../chat.html" class="actions-header__chat action--item _icon-message" data-da=".menu__list,767.98"></a>
+                <a href="#" class="actions-header__notification action--item _icon-ball" data-da=".menu__list,767.98"></a>
+                <div class="actions-header__user user-header">
+                    <div class="user-header__avatar">
+                        <img src="img/icons/logo.svg" alt="Image">
+                    </div>
+                    <div data-spollers class="user-header__spollers spollers-user">
+                        <details class="spollers-user__item">
+                            <summary class="spollers-user__title">AR. Jakir</summary>
+                            <div class="spollers-user__body">
+                                <span class="_icon-exit">Exit</span>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__bottom"></div>
+	</div>
+</header> -->
+		<main class="account siginUp">
+			<div class="account__window window-account card">
+				<form action="#" class="window-account__form">
+					<h1 class="window-account__title">Sigin</h1>
+					<div class="window-account__body">
+						<div class="window-account__rows">
+							<input class="window-account__row action--item" placeholder="User name" type="text" name="#" id="singinUserName">
+							<input class="window-account__row action--item" placeholder="First name" type="text" name="#" id="singinName">
+							<input class="window-account__row action--item" placeholder="Last name" type="text" name="#" id="singinLastName">
+							<input class="window-account__row action--item" placeholder="Email" type="email" name="#" id="siginEmaile">
+							<!-- <input class="window-account__row action--item" placeholder="Password" type="password" name="#" id="signPassword">
+                                <input class="window-account__row action--item" placeholder="Requires password" type="password" name="#" id="siginPassword"> -->
+							<div class="window-account__row action--paswords">
+								<input class="window-account__row action--item" placeholder="Password" type="password" name="#" id="signPassword">
+								<input class="window-account__row action--item" placeholder="Requires password" type="password" name="#" id="siginPassword">
+								<p id="password-error" style="color: red; display: none;">Паролі не співпадають!</p>
+							</div>
+
+							<div class="window-account__body-photo action--item">
+								<input class="window-account__row" type="file" name="#" id="profile-photo">
+								<img src="#" alt="Попередній перегляд" id="preview" style="display: none;">
+								<div id="file-name" class="window-account__label-photo"></div>
+							</div>
+
+						</div>
+						<button class="window-account__submit button" type="submit">Sigin up</button>
+						<div class="window-account__authorization">
+							<!-- <a href="#" class="window-account__authorization-link action--item">
+                                    <img src="img/icons/google.svg" alt="Image">
+                                    <span>Google</span>
+                                </a>
+                                <a href="#" class="window-account__authorization-link action--item">
+                                    <img src="img/icons/microsoft.svg" alt="Image">
+                                    <span>Microsoft</span>
+                                </a> -->
+						</div>
+					</div>
+					<h6 class="window-account__question">Already have an account? <a href="index.html">Login</a></h6>
+				</form>
+			</div>
+		</main>
+		<!-- <footer class="footer">
+	<div class="footer__container">
+	</div>
+</footer> -->
+	</div>
+	<script src="js/app.min.js?_v=20250501094704"></script>
+</body>
+
+</html>
