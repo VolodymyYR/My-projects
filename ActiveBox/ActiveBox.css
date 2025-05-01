@@ -1,0 +1,871 @@
+body {
+    margin: 0;
+    background: #fff;
+    font-size: 14px;
+    color: #6c7279;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    /*Забирає відсупи які є у заголовків по стандарту*/
+}
+
+p {
+    margin: 0 0 10px;
+    /*Забирає відступи у абзаців*/
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    /*Рахує peding в середину*/
+}
+
+/*--------------------------CONTAINER-------------------------------------------*/
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/*----------------------------HEADER---------------------------------------*/
+
+.header {
+    position: absolute;
+    /*Ці чотири команди для того, щоб header був над усіма*/
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 100%;
+}
+
+.header.fixed {
+    position: fixed;
+    /* якщо header має клас "fixed" то position ми буде fixed (Фіксована) */
+    background-color: #2e314b;
+}
+
+.header.fixed .header_inner {
+    padding: 15px 0;
+    border-bottom: none;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    /*Ділить елементи порінву з двох країв, між ними інтервал*/
+
+    align-items: center;
+    /*Усі елементи будуть у центрі*/
+    padding: 40px 0;
+
+    border-bottom: #505369 1px solid;
+    /*Лінія навколо контейнера*/
+}
+
+/*---------------------------NAV----------------------------------------*/
+
+.nav {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+
+    display: flex;
+
+    text-transform: uppercase;
+    /*Робить увесь текст написании великими літерами*/
+}
+
+.nav_link {
+    top: 0;
+    color: #FFF;
+    opacity: .75;
+    text-decoration: none;
+    /*Забирає усі декорації (Підчеркування у даному випадку)*/
+
+    margin-left: 50px;
+
+    transition: opacity .1s linear;
+    /*Для плавної зміни*/
+}
+
+.nav_link:hover {
+    /*При наведені на елемент*/
+    opacity: 1;
+}
+
+.nav_link:first-child {
+    /*Фейковий клас щоб у першого не було відступу*/
+    margin-left: 0;
+}
+
+/*--------------------------INTRO-----------------------------------------*/
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    /*Кожен елемент з нового рядка*/
+    justify-content: center;
+
+    padding-top: 100px;
+    height: 750px;
+
+    background: #2e314b url("imj/Intro.jpg") center no-repeat;
+    /*Картинка на фон*/
+    background-size: cover;
+}
+
+.intro_inner {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.intro_title {
+    font-size: 65px;
+    line-height: 1.1;
+    /*Інтервал між рядами*/
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    margin-bottom: 40px;
+
+}
+
+.intro_subtitle {
+    font-size: 22px;
+    line-height: 1.5;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+
+    margin-bottom: 80px;
+}
+
+/*-------------------------BTN------------------------------------------*/
+
+.btn {
+    display: inline-block;
+    /*Для роботи peding...*/
+    vertical-align: top;
+    /*Вирівнювання по верхній лінії*/
+    cursor: pointer;
+    /*Курсив*/
+
+    font-size: 13px;
+    color: #fff;
+    font-weight: 300;
+
+    font-family: 'Raleway', sans-serif;
+
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+
+    padding: 20px 55px;
+    border-radius: 2px;
+    /*Заокруглення*/
+
+    border: none;
+    transition: background .1s linear;
+    /*Плавний перехід*/
+}
+
+.btn--red {
+    /*Модифікатор щоб робити червоні кнопки*/
+    background: #e84545;
+}
+
+.btn--long {
+    /*Модифікатор щоб робити довгі кнопки*/
+    min-width: 280px;
+}
+
+.btn--red:hover {
+    background: #d43535;
+}
+
+/*-------------------------FEATURES------------------------------------------*/
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    /*Якщо мало містя переносить на інший рядок*/
+    margin: 100px 0;
+}
+
+.features_inner {
+    width: 33.33%;
+    padding: 25px 40px;
+
+    text-align: center;
+    /*Вирівнювання тексту по центру*/
+}
+
+.features_icon {
+    margin-bottom: 30px;
+}
+
+.features_title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #2d3033;
+
+    text-transform: uppercase;
+}
+
+.features_subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6c7279;
+
+    margin-top: 22px;
+}
+
+/*-------------------------WORKS------------------------------------------*/
+
+.works {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.works_item {
+    width: 25%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+
+    border-bottom: solid 1px #fff;
+    border-right: solid 1px #fff;
+}
+
+.works_item:hover .works_content {
+    /*При наведені на .works_item показує works_content */
+    opacity: 1;
+}
+
+.works_photo {
+    min-width: 100%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate3d(-50%, -50%, 0);
+    /*Щоб вирівняти фото по центру*/
+}
+
+.works_content {
+    display: flex;
+    flex-direction: column;
+    /*Починати кожен елемент з нового рядка*/
+    justify-content: center;
+    /*Контент по центру*/
+    text-align: center;
+
+    background-color: rgba(232, 69, 69, .9);
+    /*Щоб задати прозорість, остання цифра це процент*/
+    opacity: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    transition: opacity .2s linear;
+}
+
+.works_title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+
+    text-transform: uppercase;
+}
+
+.works_subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+
+    margin-top: 12px;
+}
+
+/*-------------------------TEAM------------------------------------------*/
+
+.team {
+    display: flex;
+    margin: 100px 0;
+}
+
+.taam_iner {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0 -15px;
+}
+
+.team_item {
+    width: 25%;
+
+    padding: 15px;
+}
+
+.team_photo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+
+    margin-bottom: 25px;
+}
+
+.team_name {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: #2d3033;
+
+    margin-bottom: 12px;
+}
+
+.team_title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #e84545;
+
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.team_subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6c7279;
+
+    margin-bottom: 30px;
+}
+
+/*-------------------------SOCIAL------------------------------------------*/
+
+.social {
+    display: flex
+}
+
+.social_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: #c6cacc 1px solid;
+    background: #fff;
+
+    margin-right: 4px;
+
+    transition: background .1s linear;
+}
+
+.social_item:hover {
+    background-color: #c6cacc;
+}
+
+.social_item:hover .social_icon {
+    fill: #393939;
+    /*Значення коліру для svg файлу*/
+}
+
+.social_icon {
+    display: block;
+    /*Для оптимальної роботи*/
+    fill: #c6cacc;
+
+    height: 20px;
+
+    transition: fill .1s linear;
+}
+
+.social--footer {
+    justify-content: center;
+}
+
+.social--footer .social_item {
+    background-color: transparent;
+    border-color: #fff;
+    border-width: 2px;
+    border-radius: 2px;
+}
+
+.social--footer .social_icon {
+    fill: #FFF;
+}
+
+.social--footer .social_item:hover {
+    background: #fff;
+}
+
+/*-------------------------REVIEWS------------------------------------------*/
+
+.reviews {
+    overflow: hidden;
+    /*Обрізає усе що виходить за межі*/
+    background-color: #53354a;
+}
+
+.reviews_slider {
+    height: 500px;
+    overflow: hidden;
+}
+
+.reviews_slider.slick-initialized {
+    height: auto;
+}
+
+.reviews_item {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.reviews_photo {
+    width: 50%;
+
+    height: 500px;
+    position: relative;
+}
+
+.reviews_img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+
+    transform: translateY(-50%);
+}
+
+.reviews_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding-left: 80px;
+}
+
+.reviews_coment {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.15;
+    color: #fff;
+
+    margin-bottom: 35px;
+}
+
+.reviews_author {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
+
+    text-transform: uppercase;
+}
+
+.slick-dots {
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0 0 10px;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+
+    list-style: none;
+
+    width: 50%;
+    position: absolute;
+}
+
+.slick-dots button {
+    width: 20px;
+    height: 20px;
+
+    background: #fff;
+    border: 0;
+    border-radius: 50%;
+    opacity: 0.5;
+    font-size: 0;
+
+    cursor: pointer;
+
+    color: transparent;
+}
+
+.slick-dots button:focus {
+    outline: 0;
+}
+
+.slick-dots li {
+    margin: 0 5px;
+}
+
+.slick-dots .slick-active button {
+    opacity: 1;
+}
+
+/*-------------------------DOWNLOAD------------------------------------------*/
+
+.download {
+    margin: 100px 0;
+
+    text-align: center;
+}
+
+.download_title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-weight: lighter;
+    color: #2d3033;
+
+    margin-bottom: 20px;
+}
+
+.download_subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #2d3033;
+    text-transform: uppercase;
+
+    margin-bottom: 40px;
+}
+
+/*-------------------------DOWNLOAD------------------------------------------*/
+
+.footer {
+    background: #3a3e64;
+}
+
+.footer_inner {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 75px 0;
+}
+
+.footer_bloc {
+    width: 33.333%;
+    padding: 0 15px;
+
+    text-align: center;
+}
+
+.footer_title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #FFF;
+
+    margin-bottom: 20px;
+}
+
+.footer_address {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    font-style: normal;
+
+    color: rgba(255, 255, 255, .5)
+}
+
+.footer_text {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: rgba(255, 255, 255, .5);
+}
+
+/*-------------------------DOWNLOAD------------------------------------------*/
+
+.copyright {
+    padding: 20px 0;
+
+    background-color: #313454;
+}
+
+.copyright_text {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #808080;
+}
+
+.copyright_text samp {
+    color: #fff;
+}
+
+.byrger {
+    display: none;
+    background: none;
+    border: 0;
+
+    padding: 9px 2px;
+
+    cursor: pointer;
+}
+
+.byrger_item {
+    display: block;
+
+    background-color: #fff;
+    width: 30px;
+    height: 3px;
+
+    font-size: 0px;
+    color: transparent;
+
+    position: relative;
+}
+
+.byrger_item:before,
+.byrger_item:after {
+    content: "";
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: #fff;
+
+    left: 0;
+    z-index: 1;
+}
+
+.byrger_item:before {
+    top: -8px;
+}
+
+.byrger_item:after {
+    bottom: -8px;
+}
+
+/*-------------------------DOWNLOAD------------------------------------------*/
+
+@media (max-width:1080px) {
+
+    .works_item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 991px) {
+
+    /*Nav---------------------------------------*/
+
+    .nav {
+        background: #2e314b;
+        text-align: right;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        top: 99%;
+
+        display: none;
+    }
+
+    .nav.show {
+        display: flex;
+    }
+
+    .nav_link {
+        padding: 12px 15px;
+    }
+
+    .byrger {
+        display: block;
+    }
+
+    /*Intro-------------------------------------*/
+
+    .intro_title {
+        font-size: 40px;
+    }
+
+    /*Features-----------------------------------*/
+
+    .features_inner {
+        width: 50%;
+    }
+
+    /*Works---------------------------------------*/
+
+    .works_item {
+        height: 250px;
+    }
+
+    /*Team-----------------------------------------*/
+
+    .team_item {
+        width: 50%;
+
+        text-align: center;
+    }
+
+    .team_photo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .social {
+        justify-content: center;
+    }
+
+    /*reviews--------------------------------------*/
+
+    .reviews_photo {
+        width: 100%;
+
+        margin: 16px 0 35px;
+
+        overflow: hidden;
+    }
+
+    .reviews_content {
+        width: 100%;
+
+        padding-left: 0;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /*Intro-------------------------------------*/
+
+    .intro {
+        height: auto;
+        padding-top: 130px;
+        padding-bottom: 20px;
+    }
+
+    .intro_title {
+        font-size: 30px;
+
+        margin-bottom: 20px;
+    }
+
+    .intro_subtitle {
+        margin-bottom: 30px;
+
+        font-size: 16px;
+    }
+
+    /*Features-----------------------------------*/
+
+    .features {
+        margin: 25px 0;
+    }
+
+    .features_inner {
+        width: 100%;
+
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    /*Works---------------------------------------*/
+
+    .works_item {
+        width: 100%;
+    }
+
+    /*Team-----------------------------------------*/
+
+    .team {
+        margin: 25px 0;
+    }
+
+    .team_item {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    /*reviews--------------------------------------*/
+
+    .reviews_coment {
+        font-size: 26px;
+    }
+
+    /*Btn--------------------------------------*/
+
+    .btn--long {
+        min-width: 260px;
+    }
+
+    /*Download------------------------------------*/
+
+    .download {
+        margin: 50px 0;
+    }
+
+    .download_title {
+        font-size: 24px;
+    }
+
+    /*Footer-----------------------------------*/
+
+    .footer_inner {
+        padding: 50px 0;
+    }
+
+    .footer_bloc {
+        width: 100%;
+
+        margin-bottom: 15px;
+    }
+
+    .footer_bloc:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 385px) {
+
+    /*Reviews-----------------------------------*/
+
+    .reviews_img {
+        right: -130px;
+    }
+}
