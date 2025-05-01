@@ -1,0 +1,375 @@
+body{
+    background-color: #ffffff;
+    font-size: 24px;
+    font-family: "Poppins";
+    color: rgba(0, 0, 0, 0.7);
+}
+
+head,
+body{
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+ol,
+ul,
+li{
+    list-style: none;
+}
+
+img{
+    vertical-align: top;
+}
+
+button{
+    font-weight: inherit;
+    color: inherit;
+    font-size: inherit;
+    background-color: inherit;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* =================================================== */
+
+.wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.page{
+    flex: 1 1 auto;
+}
+
+/* =================================================== */
+
+[class*="__container"]{
+    max-width: 1433px;
+    margin: 0 auto;
+}
+
+
+/* =================================================== */
+
+.header {
+    background-color: #ffffff;
+    width: 100%;
+    height: 140px;
+    z-index: 100;
+}
+
+.fixed{
+    position: fixed;
+}
+
+.header__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__logo {
+}
+.header__main {
+    display: flex;
+}
+
+.main-header {
+    text-align: center;
+}
+.main-header__nav {
+}
+.main-header__test {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0px 16px;
+    background: linear-gradient(225.35deg, #CEB7B4 0%, #B57049 97.53%);
+    border-radius: 32px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: 'Figtree';
+    margin-left: 30px;
+}
+
+.nav-main-header {
+}
+.nav-main-header__list {
+    display: flex;
+    
+}
+.nav-main-header__item {
+    margin-left: 30px;
+}
+.nav-main-header__link {
+    font-family: 'Figtree';
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 600;
+    padding: 7px 22px;
+    transition: border ease 0.1s;
+    border-radius: 68px;
+}
+
+.nav-main-header__link:hover{
+    border: solid 2px #B57049;
+}
+
+/* ============================================ */
+
+.title-section {
+    font-weight: 700;
+    font-size: 106px;
+    line-height: 98%;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+}
+.text-section {
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+}
+.taste-Button {
+    margin-top: 36px;
+    display: inline-block;
+
+    font-weight: 700;
+    line-height: 29px;
+    color: #363839;
+    font-family: 'Figtree';
+    padding: 9.5px 16px;
+    background: #ffffff;
+    border-radius: 32px;
+}
+
+.contentBody{
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 1s ease, transform 0.5s ease;
+}
+
+.imgBody{
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 1s ease, transform 0.5s ease;
+}
+
+.animationScroll{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================ */
+
+.page__banana {
+}
+
+.banana{
+    display: flex;
+    align-items: center;
+    height: 1028px;
+    background: linear-gradient(225.35deg, #FFEE57 0%, #FFB930 97.53%);
+}
+.banana__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.banana__content {
+    max-width: 689px;
+}
+
+.banana__img{
+}
+
+.content-banana {
+}
+.content-banana__body {
+}
+.content-banana__title {
+}
+.content-banana__text {
+}
+.content-banana__button {
+}
+
+/* ============================================= */
+
+.page__coconuts {
+}
+.coconuts {
+    display: flex;
+    align-items: center;
+    height: 888px;
+    background: linear-gradient(225.35deg, #CEB7B4 0%, #B57049 97.53%);
+}
+.coconuts__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.coconuts__content {
+    max-width: 689px;
+}
+.content-coconuts {
+}
+.content-coconuts__body {
+}
+.content-coconuts__title {
+}
+.title-section {
+}
+.content-coconuts__text {
+}
+.text-section {
+}
+.content-coconuts__button {
+}
+.taste-Button {
+}
+.coconuts__img {
+}
+
+/* ========================================== */
+
+.page__Strawberry {
+}
+.Strawberry {
+    display: flex;
+    align-items: center;
+    height: 888px;
+    background: linear-gradient(225.35deg, #FBC9C9 0%, #CF3939 97.53%);
+}
+.Strawberry__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Strawberry__content {
+    max-width: 689px;
+}
+.content-Strawberry {
+}
+.content-Strawberry__body {
+}
+.content-Strawberry__title {
+}
+.title-section {
+}
+.content-Strawberry__text {
+}
+.text-section {
+}
+.content-Strawberry__button {
+}
+.taste-Button {
+}
+.Strawberry__img {
+}
+
+/* ======================================= */
+
+.page__Blackberry {
+}
+.Blackberry {
+    display: flex;
+    align-items: center;
+    height: 888px;
+    background: linear-gradient(225.35deg, #DCB7F2 0%, #814C62 97.53%);
+}
+.Blackberry__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Blackberry__content {
+    max-width: 689px;
+}
+.content-Blackberry {
+}
+.content-Blackberry__body {
+}
+.content-Blackberry__title {
+}
+.title-section {
+}
+.content-Blackberry__text {
+}
+.text-section {
+}
+.content-Blackberry__button {
+}
+.taste-Button {
+}
+.Blackberry__img {
+}
+
+/* ==================================== */
+
+.page__Kiwi {
+}
+.Kiwi {
+    display: flex;
+    align-items: center;
+    height: 888px;
+    background: linear-gradient(225.35deg, #F2DBAF 0%, #9C9344 97.53%);
+}
+.Kiwi__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Kiwi__content {
+    max-width: 689px;
+}
+.content-Kiwi {
+}
+.content-Kiwi__body {
+}
+.content-Kiwi__title {
+}
+.title-section {
+}
+.content-Kiwi__text {
+}
+.text-section {
+}
+.content-Kiwi__button {
+}
+.taste-Button {
+}
+.Kiwi__img {
+}
+
+/* ================================== */
