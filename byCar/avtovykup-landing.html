@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <!--
+    =============================================
+    ВАЖЛИВО ДЛЯ МОБІЛЬНОГО ВІДОБРАЖЕННЯ
+    viewport не дозволяє масштабування — сайт
+    завжди виглядає "рідно" на будь-якому смартфоні
+    =============================================
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>АвтоВикуп — Продай авто за 1 годину</title>
+
+  <!--
+    =============================================
+    META / SEO
+    Ці теги покращують клік у пошуку Google
+    та вигляд посилань у соцмережах
+    =============================================
+  -->
+  <meta name="description" content="Викуп авто в Україні за 1 годину. Безплатний виїзд, гроші одразу. Приймаємо після ДТП, кредитні, битіавтомобілі.">
+  <meta property="og:title" content="АвтоВикуп — Продай авто за 1 годину">
+  <meta property="og:description" content="Оцінка на місці. Гроші готівкою одразу після підписання.">
+  <meta property="og:type" content="website">
+
+  <!--
+    =============================================
+    ШРИФТИ — завантажуємо з Google Fonts
+    Unbounded — заголовки (жирний, виразний)
+    Onest — основний текст (читабельний)
+    =============================================
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!--
+    =============================================
+    META PIXEL (Facebook/Instagram)
+    Розкоментуйте і вставте свій PIXEL_ID
+    Встановлювати ДО запуску реклами!
+    =============================================
+
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'ВАШ_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=ВАШ_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
+  -->
+
+  <!--
+    =============================================
+    GOOGLE TAG MANAGER
+    Розкоментуйте і вставте свій GTM-XXXXXXX
+    Встановлювати ДО запуску реклами!
+    =============================================
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  -->
+
+  <style>
+    /* =============================================
+       RESET — обнулення стандартних стилів браузера
+       ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* =============================================
+       CSS-ЗМІННІ — кольори, шрифти, відступи
+       Міняйте тут — зміни підхоплять усі елементи
+       =============================================
+       --accent     : основний червоний (CTA-кнопки)
+       --accent2    : жовтий (акценти, зірочки)
+       --black      : фон темних секцій
+       --light      : фон світлих секцій
+       --white      : картки, форми
+       --text       : основний колір тексту
+       --muted      : приглушений текст (підписи)
+       --green      : зелений (Viber, успіх)
+       --tg-blue    : синій Telegram
+       ============================================= */
+    :root {
+      --accent:   #FF3A1A;
+      --accent2:  #FFB300;
+      --black:    #0D0D0D;
+      --light:    #F5F2EC;
+      --mid:      #E8E4DA;
+      --white:    #FFFFFF;
+      --text:     #1A1A1A;
+      --muted:    #6B6560;
+      --tg-blue:  #29A9EB;
+      --vb-purple:#7C53AF;
+      --font-head:'Unbounded', sans-serif;
+      --font-body:'Onest', sans-serif;
+    }
+
+    /* =============================================
+       БАЗОВІ СТИЛІ
+       Статична ширина 390px — типова ширина iPhone
+       Центруємо на великих екранах рамкою
+       ============================================= */
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: #1A1A1A; /* фон поза контейнером */
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Головний контейнер — статична ширина телефону */
+    .phone-wrap {
+      width: 390px;      /* ← статична ширина під телефон */
+      min-height: 100vh;
+      background: var(--light);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* =============================================
+       HEADER — ШАПКА САЙТУ
+       Липка (sticky) — завжди видна при скролі
+       Телефон ОБОВ'ЯЗКОВО клікабельний (href="tel:")
+       ============================================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--black);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Логотип */
+    .logo {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+
+    /* Кнопка "дзвінок" у шапці
+       КРИТИЧНО: завжди видна, завжди клікабельна */
+    .header-call {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .header-call:active { background: #d42e12; }
+
+    /* =============================================
+       HERO — ПЕРШИЙ ЕКРАН
+       Найважливіша секція — людина бачить її першою
+       H1 має збігатися з текстом реклами в Google!
+       ============================================= */
+    .hero {
+      background: var(--black);
+      padding: 40px 20px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Декоративна сітка на фоні */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 30px,
+        rgba(255,58,26,0.05) 30px, rgba(255,58,26,0.05) 31px
+      );
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    /* Тег над заголовком */
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,58,26,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(255,58,26,0.25);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    /* H1 — ГОЛОВНИЙ ЗАГОЛОВОК
+       Змінюйте під конкретну рекламу:
+       - "Викуп битих авто" → якщо реклама про ДТП
+       - "Швидкий автовикуп Київ" → якщо Google по гео
+       - "Продай авто за 1 годину" → загальний варіант */
+    h1 {
+      font-family: var(--font-head);
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+    h1 .red { color: var(--accent); display: block; }
+
+    /* Підзаголовок hero */
+    .hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    /* Блок кнопок hero */
+    .hero-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    /* Основна CTA-кнопка — великий розмір для пальця (мін. 44px) */
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      transition: background 0.15s, transform 0.1s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary:active { background: #d42e12; transform: scale(0.98); }
+
+    /* Вторинна кнопка (дзвінок) */
+    .btn-outline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 400;
+      padding: 14px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-outline:active { border-color: rgba(255,255,255,0.45); }
+
+    /* Статистика під кнопками */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 12px 8px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .stat-num sup {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    /* =============================================
+       MARQUEE — БІЖУЧИЙ РЯДОК З МАРКАМИ АВТО
+       Автоматична анімація, без JS
+       ============================================= */
+    .marquee-wrap {
+      background: var(--accent);
+      padding: 9px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track { display: inline-block; animation: marquee 16s linear infinite; }
+    .marquee-track span {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0 20px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* =============================================
+       ЗАГАЛЬНІ СТИЛІ СЕКЦІЙ
+       ============================================= */
+    .section { padding: 48px 20px; }
+    .section-bg-white { background: var(--white); }
+    .section-bg-dark  { background: var(--black); }
+    .section-bg-light { background: var(--light); }
+
+    /* Мітка над заголовком секції */
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section-label-light { color: var(--accent2); }
+
+    /* Заголовок секції */
+    .section-title {
+      font-family: var(--font-head);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+    .section-title-white { color: var(--white); }
+
+    /* =============================================
+       ПЕРЕВАГИ — КАРТКИ
+       ============================================= */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 16px;
+      border: 1px solid var(--mid);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s;
+    }
+    /* Акцентна лінія знизу при натисканні */
+    .benefit-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .benefit-card:active::after { transform: scaleX(1); }
+
+    .benefit-icon { font-size: 24px; margin-bottom: 10px; }
+    .benefit-title {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+    }
+    .benefit-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* =============================================
+       ТИПИ АВТО, ЯКІ ПРИЙМАЄМО
+       ============================================= */
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .type-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 16px 10px;
+      border: 1px solid var(--mid);
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .type-card:active {
+      border-color: var(--accent);
+      background: rgba(255,58,26,0.04);
+    }
+    .type-emoji { font-size: 24px; margin-bottom: 6px; }
+    .type-label { font-size: 11px; font-weight: 500; line-height: 1.3; }
+
+    /* =============================================
+       КВІЗ — КАЛЬКУЛЯТОР ЦІНИ
+       Найважливіший конверсійний елемент для
+       трафіку з Facebook та Instagram
+       ============================================= */
+    .quiz-wrap {
+      background: #161616;
+      border-radius: 16px;
+      padding: 28px 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Прогрес-бар — 4 смужки */
+    .quiz-progress {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 24px;
+    }
+    .quiz-dot {
+      height: 4px;
+      flex: 1;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.35s;
+    }
+    .quiz-dot.active { background: var(--accent); }
+    .quiz-dot.done   { background: rgba(255,58,26,0.35); }
+
+    /* Питання квізу */
+    .quiz-q {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      letter-spacing: -0.3px;
+      line-height: 1.35;
+    }
+
+    /* Варіанти відповідей */
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .quiz-options.single-col { grid-template-columns: 1fr; }
+
+    .quiz-opt {
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 12px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+      font-family: var(--font-body);
+      line-height: 1.35;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Виділена (обрана) опція */
+    .quiz-opt.selected,
+    .quiz-opt:active {
+      background: rgba(255,58,26,0.15);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* Крок квізу — прихований за замовчуванням */
+    .quiz-step { display: none; }
+    .quiz-step.visible { display: block; }
+
+    /* Поля вводу (останній крок) */
+    .quiz-input-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+
+    .quiz-input {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-size: 16px; /* мін. 16px — щоб iOS не збільшував zoom */
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+    .quiz-input:focus  { border-color: var(--accent); }
+    .quiz-input.error  { border-color: #ff4444; }
+    .quiz-input::placeholder { color: rgba(255,255,255,0.28); }
+
+    /* Підказка вибору месенджера */
+    .msg-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 12px;
+    }
+
+    /* Кнопки месенджерів */
+    .messenger-row { display: flex; gap: 8px; margin-bottom: 20px; }
+    .msg-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1.5px solid;
+      transition: all 0.15s;
+      font-family: var(--font-body);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .msg-tg {
+      background: rgba(41,169,235,0.12);
+      border-color: rgba(41,169,235,0.3);
+      color: var(--tg-blue);
+    }
+    .msg-vb {
+      background: rgba(124,83,175,0.12);
+      border-color: rgba(124,83,175,0.3);
+      color: var(--vb-purple);
+    }
+    .msg-btn.active { border-width: 2px; }
+    .msg-tg.active  { border-color: var(--tg-blue);  background: rgba(41,169,235,0.22); }
+    .msg-vb.active  { border-color: var(--vb-purple); background: rgba(124,83,175,0.22); }
+
+    /* Дрібний текст під кнопкою відправки */
+    .quiz-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.22);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* Фінальний успіх-екран */
+    .quiz-success { text-align: center; padding: 8px 0; }
+    .success-icon { font-size: 52px; margin-bottom: 16px; }
+    .success-title {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .success-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    /* Посилання на Instagram з сторінки "Дякую"
+       Потрібне для відстеження конверсій Meta Pixel */
+    .success-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .success-ig:active { border-color: rgba(255,255,255,0.4); }
+
+    /* =============================================
+       ЯК ЦЕ ПРАЦЮЄ — КРОКИ
+       ============================================= */
+    .steps-list { display: flex; flex-direction: column; gap: 0; }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--mid);
+      align-items: flex-start;
+    }
+    .step-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .step-num-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .step-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,58,26,0.12);
+      border: 1.5px solid rgba(255,58,26,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    /* Пунктирна лінія між кроками */
+    .step-line {
+      width: 1px;
+      flex: 1;
+      background: rgba(255,58,26,0.15);
+      min-height: 20px;
+      margin-top: 4px;
+    }
+    .step-item:last-child .step-line { display: none; }
+
+    .step-content { padding-top: 6px; }
+    .step-title {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+    .step-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+    /* =============================================
+       ВІДГУКИ КЛІЄНТІВ
+       ============================================= */
+    .reviews-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .review-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--mid);
+    }
+    /* Зірочки рейтингу */
+    .review-stars { color: var(--accent2); font-size: 13px; margin-bottom: 10px; letter-spacing: 1px; }
+    .review-text { font-size: 13px; line-height: 1.65; color: var(--text); margin-bottom: 14px; }
+    .review-author { display: flex; align-items: center; gap: 10px; }
+
+    /* Аватар — кольорове коло з ініціалами */
+    .review-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .review-name  { font-size: 13px; font-weight: 500; }
+    .review-car   { font-size: 11px; color: var(--muted); }
+
+    /* =============================================
+       CTA-БАНЕР — ЗАКЛИК ДО ДІЇ
+       ============================================= */
+    .cta-banner { background: var(--accent); padding: 48px 20px; text-align: center; }
+    .cta-banner h2 {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .cta-sub { font-size: 14px; color: rgba(255,255,255,0.75); margin-bottom: 24px; }
+
+    /* Великий номер телефону — клікабельний!
+       Людина може натиснути і одразу зателефонувати */
+    .cta-phone {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--white);
+      text-decoration: none;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+      transition: opacity 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta-phone:active { opacity: 0.8; }
+
+    .cta-schedule {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+    }
+
+    /* Кнопки месенджерів у CTA-банері */
+    .cta-messengers { display: flex; gap: 10px; }
+    .cta-msg {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 13px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta-msg:active { background: rgba(255,255,255,0.22); }
+
+    /* =============================================
+       ПЛАВАЮЧІ КНОПКИ МЕСЕНДЖЕРІВ
+       Завжди видні при скролі (position: fixed)
+       Для трафіку з соцмереж — люди хочуть писати!
+       ============================================= */
+    .float-btns {
+      position: fixed;
+      right: 16px;
+      bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 300;
+    }
+
+    .float-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .float-btn:active { transform: scale(0.9); }
+
+    /* Кольори кнопок — фірмові кольори месенджерів */
+    .fb-tg    { background: #29A9EB; }
+    .fb-vb    { background: #7C53AF; }
+    .fb-phone { background: var(--accent); }
+
+    .float-btn svg { width: 22px; height: 22px; fill: white; }
+
+    /* Пульсація на кнопці дзвінка для привернення уваги */
+    .fb-phone::before {
+      content: '';
+      position: absolute;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+      z-index: -1;
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      70%  { transform: scale(1.5); opacity: 0; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    /* Потрібно для ::before */
+    .float-btn { position: relative; }
+
+    /* =============================================
+       ФУТЕР
+       ============================================= */
+    footer {
+      background: var(--black);
+      padding: 24px 20px;
+    }
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); line-height: 1.6; }
+    .footer-links { display: flex; gap: 16px; margin-top: 16px; }
+    .footer-link { font-size: 11px; color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-link:active { color: rgba(255,255,255,0.6); }
+
+    /* =============================================
+       УТИЛІТИ
+       ============================================= */
+    /* Прибираємо стандартний outline на мобільних */
+    button:focus, a:focus { outline: none; }
+
+    /* Кнопка на повну ширину */
+    .full-width { width: 100%; }
+  </style>
+</head>
+<body>
+
+  <!--
+    =============================================
+    GTM noscript — другий тег GTM, вставляється
+    одразу після <body> якщо підключаєте GTM
+    =============================================
+
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  -->
+
+  <!-- Статичний контейнер шириною 390px (ширина iPhone) -->
+  <div class="phone-wrap">
+
+    <!-- =============================================
+         HEADER
+         ============================================= -->
+    <header>
+      <div class="logo">Авто<span>Викуп</span></div>
+      <!--
+        href="tel:+380XXXXXXXXX" — замініть на свій номер
+        Це найважливіше! Людина натискає і одразу дзвонить
+      -->
+      <a href="tel:+380991234567" class="header-call">
+        📞 099 123-45-67
+      </a>
+    </header>
+
+
+    <!-- =============================================
+         HERO — ПЕРШИЙ ЕКРАН
+         Змінюйте H1 під конкретну рекламну кампанію:
+         • Google "викуп авто" → "Продай авто за 1 годину"
+         • Google "викуп битих авто" → "Викупимо ваше авто після ДТП"
+         • Facebook загальна → "Продай авто без клопоту"
+         ============================================= -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <!-- Тег — підтверджує нішу одразу -->
+        <div class="hero-tag">⚡ Швидкий викуп · Вся Україна</div>
+
+        <!-- ГОЛОВНИЙ ЗАГОЛОВОК — має збігатись з рекламою! -->
+        <h1>
+          Продай авто
+          <span class="red">за 1 годину.</span>
+        </h1>
+
+        <p class="hero-sub">
+          Виїжджаємо безплатно. Оцінка на місці.
+          Гроші готівкою або на картку — відразу після підписання.
+        </p>
+
+        <div class="hero-btns">
+          <!-- Кнопка веде до квізу (#quiz) — основна конверсія -->
+          <a href="#quiz" class="btn-primary full-width">
+            Дізнатися вартість авто →
+          </a>
+          <!-- Пряма кнопка дзвінка для тих хто "горить" -->
+          <a href="tel:+380991234567" class="btn-outline full-width">
+            📞 Подзвонити прямо зараз
+          </a>
+        </div>
+
+        <!-- Статистика — підвищує довіру -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">2800<sup>+</sup></div>
+            <div class="stat-label">авто куплено</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">98<sup>%</sup></div>
+            <div class="stat-label">задоволених</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">60<sup>хв</sup></div>
+            <div class="stat-label">час угоди</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =============================================
+         БІГУЧИЙ РЯДОК — марки авто
+         Показує що беремо будь-які марки
+         ============================================= -->
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee-track">
+        <!-- Дублюємо двічі для безшовного циклу -->
+        <span>Toyota</span><span>BMW</span><span>Mercedes</span>
+        <span>Volkswagen</span><span>Hyundai</span><span>Kia</span>
+        <span>Ford</span><span>Renault</span><span>Skoda</span>
+        <span>Opel</span><span>Honda</span><span>Mazda</span>
+        <span>Toyota</span><span>BMW</span><span>Mercedes</span>
+        <span>Volkswagen</span><span>Hyundai</span><span>Kia</span>
+        <span>Ford</span><span>Renault</span><span>Skoda</span>
+        <span>Opel</span><span>Honda</span><span>Mazda</span>
+      </div>
+    </div>
+
+
+    <!-- =============================================
+         ПЕРЕВАГИ
+         ============================================= -->
+    <section class="section section-bg-light">
+      <div class="section-label">Чому ми</div>
+      <div class="section-title">Без черг, без обману</div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-title">Ринкова ціна</div>
+          <div class="benefit-desc">Оцінюємо за реальними ринковими даними</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🚗</div>
+          <div class="benefit-title">Виїзд безплатно</div>
+          <div class="benefit-desc">Приїжджаємо в будь-яку точку міста</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📄</div>
+          <div class="benefit-title">Все оформимо</div>
+          <div class="benefit-desc">Договір і зняття з обліку — наші турботи</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💳</div>
+          <div class="benefit-title">Гроші одразу</div>
+          <div class="benefit-desc">Готівка або на картку в день угоди</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =============================================
+         ТИПИ АВТО
+         ============================================= -->
+    <section class="section section-bg-white" style="padding-top: 0;">
+      <div class="section-label">Приймаємо</div>
+      <div class="section-title">Будь-який стан</div>
+
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="type-emoji">✅</div>
+          <div class="type-label">Справне авто</div>
+        </div>
+        <div class="type-card">
+          <div class="type-emoji">💥</div>
+          <div class="type-label">Після ДТП</div>
+        </div>
+        <div class="type-card">
+          <div class="type-emoji">🏦</div>
+          <div class="type-label">Кредитне</div>
+        </div>
+        <div class="type-card">
+          <div class="type-emoji">⚙️</div>
+          <div class="type-label">На запчастини</div>
+        </div>
+        <div class="type-card">
+          <div class="type-emoji">🔑</div>
+          <div class="type-label">Без документів</div>
+        </div>
+        <div class="type-card">
+          <div class="type-emoji">🚕</div>
+          <div class="type-label">Таксі/Прокат</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =============================================
+         КВІЗ — КАЛЬКУЛЯТОР ЦІНИ
+         id="quiz" — щоб кнопки вище перекидали сюди
+         Це головний конверсійний елемент для соцмереж!
+         Конвертує у 2-3 рази краще ніж звичайна форма
+         ============================================= -->
+    <section class="section section-bg-dark" id="quiz">
+      <div class="section-label section-label-light">Калькулятор ціни</div>
+      <div class="section-title section-title-white">
+        4 питання — і ви знаєте вартість
+      </div>
+
+      <div class="quiz-wrap">
+
+        <!-- Прогрес — 4 точки, заповнюються з JS -->
+        <div class="quiz-progress">
+          <div class="quiz-dot active" id="dot-1"></div>
+          <div class="quiz-dot" id="dot-2"></div>
+          <div class="quiz-dot" id="dot-3"></div>
+          <div class="quiz-dot" id="dot-4"></div>
+        </div>
+
+        <!-- КРОК 1: Марка авто -->
+        <div class="quiz-step visible" id="step-1">
+          <div class="quiz-q">1/4 — Яка марка вашого авто?</div>
+          <div class="quiz-options">
+            <!-- onclick передає номер кроку і вибір -->
+            <button class="quiz-opt" onclick="selectOpt(this, 1)">🇯🇵 Toyota / Honda</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 1)">🇩🇪 BMW / Mercedes</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 1)">🇩🇪 VW / Skoda / Audi</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 1)">🇰🇷 Hyundai / Kia</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 1)">🇺🇸 Ford / Jeep</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 1)">🌍 Інша марка</button>
+          </div>
+        </div>
+
+        <!-- КРОК 2: Рік -->
+        <div class="quiz-step" id="step-2">
+          <div class="quiz-q">2/4 — Який рік випуску?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="selectOpt(this, 2)">2020–2024</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 2)">2015–2019</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 2)">2010–2014</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 2)">2005–2009</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 2)">2000–2004</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 2)">До 2000</button>
+          </div>
+        </div>
+
+        <!-- КРОК 3: Стан -->
+        <div class="quiz-step" id="step-3">
+          <div class="quiz-q">3/4 — Стан автомобіля?</div>
+          <div class="quiz-options single-col">
+            <button class="quiz-opt" onclick="selectOpt(this, 3)">✅ На ходу, без пошкоджень</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 3)">⚠️ Потребує ремонту / незначні пошкодження</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 3)">💥 Після серйозного ДТП</button>
+            <button class="quiz-opt" onclick="selectOpt(this, 3)">🏦 Кредитне / під обтяженням</button>
+          </div>
+        </div>
+
+        <!-- КРОК 4: Контактні дані
+             Поле телефону має font-size: 16px — щоб iOS
+             не робив zoom при фокусі (важливо для UX!) -->
+        <div class="quiz-step" id="step-4">
+          <div class="quiz-q">4/4 — Куди надіслати оцінку?</div>
+
+          <div class="quiz-input-row">
+            <input
+              class="quiz-input"
+              type="tel"
+              id="quiz-phone"
+              placeholder="Ваш номер телефону"
+              inputmode="tel"
+              autocomplete="tel"
+            >
+          </div>
+
+          <div class="msg-hint">Отримати оцінку через:</div>
+
+          <!-- Вибір месенджера — JS підсвічує активний -->
+          <div class="messenger-row">
+            <button class="msg-btn msg-tg" id="btn-tg" onclick="toggleMsg('tg')">
+              <!-- SVG логотип Telegram -->
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.247l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.52 14.26 3.56 13.37c-.656-.204-.67-.656.136-.971l10.878-4.19c.546-.197 1.025.133.988.038z"/>
+              </svg>
+              Telegram
+            </button>
+            <button class="msg-btn msg-vb" id="btn-vb" onclick="toggleMsg('vb')">
+              <!-- SVG логотип Viber -->
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M11.4 0C5.5 0 .8 4.5.8 10.1c0 2.8 1.1 5.4 3.1 7.3v3.7c0 .3.1.5.3.7.2.2.4.2.6.1l3.8-1.5c.9.2 1.9.3 2.8.3 5.9 0 10.6-4.5 10.6-10.1S17.3 0 11.4 0z"/>
+              </svg>
+              Viber
+            </button>
+          </div>
+
+          <!--
+            Кнопка відправки форми
+            Підключіть до свого backend / Webhook / CRM:
+            - Бітрікс24: використайте REST API
+            - amoCRM: використайте Webhooks
+            - Просто: відправляйте на email через FormSubmit.co
+          -->
+          <button class="btn-primary full-width" onclick="submitQuiz()" style="font-size:15px; padding:16px;">
+            Отримати безплатну оцінку →
+          </button>
+
+          <p class="quiz-hint">
+            Менеджер зателефонує протягом 5 хвилин<br>
+            Ваші дані захищені та не передаються третім особам
+          </p>
+        </div>
+
+        <!-- СТОРІНКА "ДЯКУЮ" (Thank You Page)
+             ВАЖЛИВО для аналітики:
+             - Meta Pixel: відстежте подію Lead тут
+             - Google Ads: відстежте конверсію тут
+             Додайте fbq('track', 'Lead') в JS submitQuiz() -->
+        <div class="quiz-step" id="step-success">
+          <div class="quiz-success">
+            <div class="success-icon">🎉</div>
+            <div class="success-title">Заявку прийнято!</div>
+            <div class="success-sub">
+              Наш менеджер зателефонує вам протягом 5 хвилин з попередньою оцінкою авто
+            </div>
+            <!--
+              Посилання на Instagram — ретаргетинг аудиторія
+              Змініть href на своє посилання
+            -->
+            <a href="https://instagram.com/ВАШАПОСИЛАННЯ" class="success-ig">
+              📸 Підписатися на Instagram →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =============================================
+         ЯК ЦЕ ВІДБУВАЄТЬСЯ — КРОКИ
+         ============================================= -->
+    <section class="section section-bg-white">
+      <div class="section-label">Процес</div>
+      <div class="section-title">Як це відбувається</div>
+
+      <div class="steps-list">
+
+        <div class="step-item">
+          <div class="step-num-wrap">
+            <div class="step-circle">01</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Залишіть заявку</div>
+            <div class="step-desc">Квіз вище або дзвінок — займає 2 хвилини</div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num-wrap">
+            <div class="step-circle">02</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Виїжджаємо до вас</div>
+            <div class="step-desc">Безплатно приїжджаємо в зручне місце протягом 30–60 хвилин</div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num-wrap">
+            <div class="step-circle">03</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Огляд і оцінка</div>
+            <div class="step-desc">Перевіряємо авто на місці, озвучуємо фінальну ціну — 20 хвилин</div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num-wrap">
+            <div class="step-circle">04</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Гроші та документи</div>
+            <div class="step-desc">Підписуємо договір, передаємо гроші одразу. Зняття з обліку — наш клопіт</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =============================================
+         ВІДГУКИ
+         ============================================= -->
+    <section class="section section-bg-light" style="padding-top: 0;">
+      <div class="section-label">Відгуки</div>
+      <div class="section-title">Що кажуть клієнти</div>
+
+      <div class="reviews-list">
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">
+            Продав свій Octavia після ДТП. Думав, що дадуть копійки — а реально запропонували нормальну ціну. Гроші отримав одразу, все по-людськи.
+          </div>
+          <div class="review-author">
+            <div class="review-avatar">ОМ</div>
+            <div>
+              <div class="review-name">Олексій М.</div>
+              <div class="review-car">Skoda Octavia 2017</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">
+            Терміново потрібні були гроші. Подзвонила вранці — ввечері вже тримала готівку в руках. Дуже зручно, що самі приїхали і забрали всі папери.
+          </div>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #7C53AF;">ВК</div>
+            <div>
+              <div class="review-name">Вікторія К.</div>
+              <div class="review-car">Toyota Camry 2016</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">
+            Кредитне авто, думав, що ніхто не візьме. Ці хлопці самі вирішили питання з банком. Я просто приїхав підписати і отримати різницю.
+          </div>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #29A9EB;">ДЛ</div>
+            <div>
+              <div class="review-name">Дмитро Л.</div>
+              <div class="review-car">Hyundai Tucson 2019</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =============================================
+         CTA-БАНЕР — ФІНАЛЬНИЙ ЗАКЛИК
+         Великий клікабельний номер телефону
+         ============================================= -->
+    <section class="cta-banner">
+      <h2>Готові продати авто сьогодні?</h2>
+      <p class="cta-sub">Телефонуйте — відповімо за 30 секунд</p>
+
+      <!--
+        ГОЛОВНИЙ ТЕЛЕФОН — замініть на свій!
+        Повторюється тут третій раз на сторінці
+        (шапка + hero + тут) — для Google Ads це критично
+      -->
+      <a href="tel:+380991234567" class="cta-phone">+38 099 123-45-67</a>
+      <p class="cta-schedule">Працюємо 24/7, без вихідних</p>
+
+      <div class="cta-messengers">
+        <!--
+          Замініть USERNAME на ваш нікнейм у Telegram
+          Замініть номер у Viber посиланні
+        -->
+        <a href="https://t.me/ВАШНІКНЕЙМ" class="cta-msg">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.247l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.52 14.26 3.56 13.37c-.656-.204-.67-.656.136-.971l10.878-4.19c.546-.197 1.025.133.988.038z"/>
+          </svg>
+          Telegram
+        </a>
+        <a href="viber://chat?number=+380991234567" class="cta-msg">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M11.4 0C5.5 0 .8 4.5.8 10.1c0 2.8 1.1 5.4 3.1 7.3v3.7c0 .3.1.5.3.7.2.2.4.2.6.1l3.8-1.5c.9.2 1.9.3 2.8.3 5.9 0 10.6-4.5 10.6-10.1S17.3 0 11.4 0z"/>
+          </svg>
+          Viber
+        </a>
+      </div>
+    </section>
+
+
+    <!-- =============================================
+         ФУТЕР
+         ============================================= -->
+    <footer>
+      <div class="footer-logo">Авто<span>Викуп</span></div>
+      <div class="footer-copy">
+        © 2025 АвтоВикуп. Всі права захищені.<br>
+        Ліцензія: ФОП / ТОВ Назва компанії
+      </div>
+      <div class="footer-links">
+        <a href="/privacy" class="footer-link">Політика конфіденційності</a>
+        <a href="/terms" class="footer-link">Умови використання</a>
+      </div>
+    </footer>
+
+
+    <!-- =============================================
+         ПЛАВАЮЧІ КНОПКИ МЕСЕНДЖЕРІВ
+         Завжди видні при скролі
+         position: fixed відносно viewport (не контейнера!)
+         Замініть посилання на свої
+         ============================================= -->
+    <div class="float-btns">
+
+      <!-- Telegram -->
+      <a href="https://t.me/ВАШНІКНЕЙМ" class="float-btn fb-tg" aria-label="Написати в Telegram">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.247l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.52 14.26 3.56 13.37c-.656-.204-.67-.656.136-.971l10.878-4.19c.546-.197 1.025.133.988.038z"/>
+        </svg>
+      </a>
+
+      <!-- Viber -->
+      <a href="viber://chat?number=+380991234567" class="float-btn fb-vb" aria-label="Написати у Viber">
+        <svg viewBox="0 0 24 24">
+          <path d="M11.4 0C5.5 0 .8 4.5.8 10.1c0 2.8 1.1 5.4 3.1 7.3v3.7c0 .3.1.5.3.7.2.2.4.2.6.1l3.8-1.5c.9.2 1.9.3 2.8.3 5.9 0 10.6-4.5 10.6-10.1S17.3 0 11.4 0z"/>
+        </svg>
+      </a>
+
+      <!-- Телефон (пульсує для уваги) -->
+      <a href="tel:+380991234567" class="float-btn fb-phone" aria-label="Подзвонити">
+        <svg viewBox="0 0 24 24">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/>
+        </svg>
+      </a>
+
+    </div>
+
+  </div><!-- /phone-wrap -->
+
+
+  <!-- =============================================
+       JAVASCRIPT — ЛОГІКА КВІЗУ
+       Весь JS в одному блоці в кінці сторінки
+       (швидше завантажується)
+       ============================================= -->
+  <script>
+    // Поточний крок квізу (починаємо з 1)
+    let quizStep = 1;
+
+    // Обрані відповіді — зберігаємо для відправки
+    const quizAnswers = {};
+
+    /*
+      selectOpt(btn, step)
+      Викликається при натисканні на варіант відповіді
+      btn  — елемент кнопки
+      step — поточний крок (1-3)
+    */
+    function selectOpt(btn, step) {
+      // Знімаємо виділення з усіх кнопок у групі
+      const parent = btn.closest('.quiz-options');
+      parent.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+
+      // Виділяємо обрану кнопку
+      btn.classList.add('selected');
+
+      // Зберігаємо відповідь
+      quizAnswers['step' + step] = btn.textContent.trim();
+
+      // Переходимо до наступного кроку через 350мс
+      // (пауза щоб людина побачила виділення)
+      setTimeout(() => goToStep(step + 1), 350);
+    }
+
+    /*
+      goToStep(step)
+      Перемикає видимий крок квізу
+      Оновлює прогрес-бар
+    */
+    function goToStep(step) {
+      // Ховаємо поточний крок
+      const currentEl = document.getElementById('step-' + quizStep);
+      if (currentEl) currentEl.classList.remove('visible');
+
+      // Показуємо новий крок
+      quizStep = step;
+      const nextEl = document.getElementById('step-' + step);
+      if (nextEl) nextEl.classList.add('visible');
+
+      // Оновлюємо прогрес-бар (4 точки)
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById('dot-' + i);
+        if (!dot) continue;
+        dot.classList.remove('active', 'done');
+        if (i < step)      dot.classList.add('done');
+        else if (i === step) dot.classList.add('active');
+      }
+    }
+
+    /*
+      toggleMsg(type)
+      Перемикає активний месенджер (tg / vb)
+      Зберігає вибір для відправки
+    */
+    function toggleMsg(type) {
+      document.getElementById('btn-tg').classList.toggle('active', type === 'tg');
+      document.getElementById('btn-vb').classList.toggle('active', type === 'vb');
+      quizAnswers['messenger'] = type;
+    }
+
+    /*
+      submitQuiz()
+      Валідація форми і відправка даних
+      Після успішної відправки — показуємо "Дякую"
+      і фіксуємо конверсію в Meta Pixel
+    */
+    function submitQuiz() {
+      const phoneInput = document.getElementById('quiz-phone');
+      const phone = phoneInput.value.trim();
+
+      // Проста валідація — мінімум 7 символів
+      if (!phone || phone.replace(/\D/g, '').length < 7) {
+        phoneInput.classList.add('error');
+        phoneInput.placeholder = 'Введіть номер телефону!';
+        phoneInput.focus();
+        return;
+      }
+      phoneInput.classList.remove('error');
+
+      // Збираємо всі дані форми
+      const formData = {
+        phone:     phone,
+        messenger: quizAnswers.messenger || 'не обрано',
+        brand:     quizAnswers.step1 || '',
+        year:      quizAnswers.step2 || '',
+        condition: quizAnswers.step3 || '',
+        source:    document.referrer || 'direct'
+      };
+
+      console.log('Дані квізу:', formData);
+
+      /*
+        =============================================
+        ВІДПРАВКА ДАНИХ — ВАРІАНТИ ІНТЕГРАЦІЇ
+        Розкоментуйте потрібний варіант
+        =============================================
+
+        // ВАРІАНТ 1: Fetch на свій backend / Webhook
+        fetch('https://ВАШСЕРВЕР.com/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        // ВАРІАНТ 2: Безплатний FormSubmit.co (без backend)
+        // Просто замініть EMAIL на свій і розкоментуйте
+        fetch('https://formsubmit.co/ajax/ВАШ@EMAIL.COM', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        // ВАРІАНТ 3: Telegram Bot (відправляє у ваш чат)
+        const BOT_TOKEN = 'ВАШ_BOT_TOKEN';
+        const CHAT_ID   = 'ВАШ_CHAT_ID';
+        const message   = `Нова заявка!\nТелефон: ${phone}\nМарка: ${formData.brand}\nРік: ${formData.year}\nСтан: ${formData.condition}\nМесенджер: ${formData.messenger}`;
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: message })
+        });
+      */
+
+      /*
+        =============================================
+        ВІДСТЕЖЕННЯ КОНВЕРСІЙ
+        Розкоментуйте після підключення пікселів
+        =============================================
+
+        // Meta Pixel — подія "Lead"
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Lead');
+        }
+
+        // Google Ads конверсія
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-XXXXXXXXX/XXXXXXXXX'
+          });
+        }
+      */
+
+      // Ховаємо крок 4, показуємо "Дякую"
+      document.getElementById('step-4').classList.remove('visible');
+      document.getElementById('step-success').classList.add('visible');
+
+      // Всі точки прогресу — зелені (виконані)
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById('dot-' + i);
+        if (dot) { dot.classList.remove('active'); dot.classList.add('done'); }
+      }
+    }
+
+    /*
+      Smooth scroll для кнопок "Дізнатися вартість →"
+      Плавно прокручує до секції квізу
+    */
+    document.querySelectorAll('a[href="#quiz"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('quiz').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
